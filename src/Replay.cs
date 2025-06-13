@@ -458,7 +458,8 @@ namespace BrawlhallaReplayReader
 	}
 
 	///<summary>Enumeration <c>GameModeFlags</c> stores information about the game mode flags used during a match.</summary>
-	[Flags] public enum GameModeFlags
+	[Flags]
+	public enum GameModeFlags
 	{
 		///<value>Whether teams are enabled.</value>
 		Teams = 1 << 0,
@@ -471,6 +472,9 @@ namespace BrawlhallaReplayReader
 
 		///<value>Whether the new FFA scoring system is used. Only has an effect when the scoring type is TIMED.</value>
 		AltMode = 1 << 3,
+
+		///<value>Dummy; bit 4 is unused.</value>
+		Unused = 1 << 4,
 
 		///<value>Whether test Levels are enabled.</value>
 		TestLevelsOn = 1 << 5,
