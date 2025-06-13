@@ -458,7 +458,8 @@ namespace BrawlhallaReplayReader
 	}
 
 	///<summary>Enumeration <c>GameModeFlags</c> stores information about the game mode flags used during a match.</summary>
-	[Flags] public enum GameModeFlags
+	[Flags]
+	public enum GameModeFlags
 	{
 		///<value>Whether teams are enabled.</value>
 		Teams = 1 << 0,
@@ -469,11 +470,11 @@ namespace BrawlhallaReplayReader
 		///<value>Whether the camera is fixed.</value>
 		FixedCamera = 1 << 2,
 
-		///<value>Whether gadgets are disabled.</value>
-		GadgetsOff = 1 << 3,
+		///<value>Whether the new FFA scoring system is used. Only has an effect when the scoring type is TIMED.</value>
+		AltMode = 1 << 3,
 
-		///<value>Whether weapons are disabled.</value>
-		WeaponsOff = 1 << 4,
+		///<value>Dummy; bit 4 is unused.</value>
+		Unused = 1 << 4,
 
 		///<value>Whether test Levels are enabled.</value>
 		TestLevelsOn = 1 << 5,
@@ -489,10 +490,6 @@ namespace BrawlhallaReplayReader
 
 		///<value>Whether Crew Battle is enabled.</value>
 		ForceCrewBattleCycle = 1 << 9,
-
-		///<value>Whether Advanced Settings are enabled.</value>
-		///<remarks>Advanced Settings are not implemented in the live game.</remarks>
-		AdvancedSettings = 1 << 10
 	}
 
 	///<summary>Enumeration <c>VariationType</c> stores the gamemode variation used during a match.</summary>
