@@ -6,7 +6,7 @@ namespace BrawlhallaReplayReader
 {
 	///<summary>Class <c>Replay</c> reads a Brawlhalla replay file.</summary>
 	///<remarks>
-	///<para>This will not work with replays with a version lower than <c>246</c> (game version <c>9.01</c>).<br/>
+	///<para>This will not work with replays with a version lower than <c>256</c> (game version <c>9.11</c>).<br/>
 	///Based on <a href="https://github.com/itselectroz/brawlhalla-replay-reader/">brawlhalla-replay-reader</a> by itselectroz.</para>
 	///</remarks>
 	public class Replay
@@ -259,6 +259,9 @@ namespace BrawlhallaReplayReader
 		///<value>The player's KO Effect (Emitter) ID.</value>
 		public uint EmitterID { get; private init; }
 
+		///<value>The player's Trail Effect ID.</value>
+		public uint TrailEffectID { get; private init; }
+
 		///<value>The player's UI Theme (PlayerTheme) ID.</value>
 		public uint PlayerThemeID { get; private init; }
 
@@ -315,6 +318,7 @@ namespace BrawlhallaReplayReader
 			SpawnBotID = (uint)data.ReadInt();
 			CompanionID = (uint)data.ReadInt();
 			EmitterID = (uint)data.ReadInt();
+			TrailEffectID = (uint)data.ReadInt();
 			PlayerThemeID = (uint)data.ReadInt();
 			for (byte i = 0; i < 8; i++) Taunts[i] = (uint)data.ReadInt();
 			WinTauntID = (ushort)data.ReadShort();
@@ -335,7 +339,7 @@ namespace BrawlhallaReplayReader
 
 		///<summary>Converts the <c>PlayerType</c> to a string.</summary>
 		///<returns>String representation of the <c>PlayerType</c>.</returns>
-		public override string ToString() => $"PlayerType {{ ColorSchemeID: {ColorSchemeID}, SpawnBotID: {SpawnBotID}, EmitterID: {EmitterID}, PlayerThemeID: {PlayerThemeID}, Taunts: [{string.Join(", ", Taunts)}], WinTauntID: {WinTauntID}, LoseTauntID: {LoseTauntID}, Unknown: [{string.Join(", ", TauntDatabase)}], AvatarID: {AvatarID}, Team: {Team}, ConnectionTime: {ConnectionTime}, Heroes: [{string.Join(", ", Heroes)}], IsBot: {IsBot}, HandicapsEnabled: {HandicapsEnabled}, HandicapStockCount: {HandicapStockCount}, HandicapDamageDoneMultiplier: {HandicapDamageDoneMultiplier}, HandicapDamageTakenMultiplier: {HandicapDamageTakenMultiplier} }}";
+		public override string ToString() => $"PlayerType {{ ColorSchemeID: {ColorSchemeID}, SpawnBotID: {SpawnBotID}, CompanionID: {CompanionID}, EmitterID: {EmitterID}, TrailEffectID: {TrailEffectID}, PlayerThemeID: {PlayerThemeID}, Taunts: [{string.Join(", ", Taunts)}], WinTauntID: {WinTauntID}, LoseTauntID: {LoseTauntID}, Unknown: [{string.Join(", ", TauntDatabase)}], AvatarID: {AvatarID}, Team: {Team}, ConnectionTime: {ConnectionTime}, Heroes: [{string.Join(", ", Heroes)}], IsBot: {IsBot}, HandicapsEnabled: {HandicapsEnabled}, HandicapStockCount: {HandicapStockCount}, HandicapDamageDoneMultiplier: {HandicapDamageDoneMultiplier}, HandicapDamageTakenMultiplier: {HandicapDamageTakenMultiplier} }}";
 
 		///<summary>Converts the <c>PlayerType</c> to a JSON string.</summary>
 		///<returns>JSON string representation of the <c>PlayerType</c>.</returns>
